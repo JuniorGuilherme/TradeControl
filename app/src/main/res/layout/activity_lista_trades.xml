@@ -5,7 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pc_gamer.tradecontrol.ListaTradesActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="15dp"
+    android:layout_marginLeft="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trades"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_marginBottom="10dp"/>
 
     <ListView
         android:layout_width="match_parent"

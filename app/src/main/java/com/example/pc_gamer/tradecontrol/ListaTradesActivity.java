@@ -9,7 +9,6 @@ public class ListaTradesActivity extends AppCompatActivity {
     Trade t = new Trade();
     Moeda m = new Moeda();
     ListView lvTrades;
-    AdapterTrade adapterTrade = new AdapterTrade(t.retornaArrayTrades(), this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +18,6 @@ public class ListaTradesActivity extends AppCompatActivity {
         lvTrades = findViewById(R.id.lvTrades);
 
 
-        lvTrades.setAdapter(adapterTrade);
+        lvTrades.setAdapter(new AdapterTrade(t.retornaArrayTrades(), this));
     }
 }

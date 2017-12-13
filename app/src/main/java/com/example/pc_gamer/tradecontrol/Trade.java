@@ -1,6 +1,7 @@
 package com.example.pc_gamer.tradecontrol;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by PC-Gamer on 11/12/2017.
@@ -12,9 +13,19 @@ public class Trade {
     private double qtdVendaMoeda;
     private double valorCompra;
     private double valorVenda;
-    private Double lucroLiquido;
-    private Double montanteOperacao;
-    ArrayList<Trade> lt = new ArrayList<>();
+    private double lucroLiquido;
+    private double saldoTrade;
+    private static Double saldoCapital;
+    private Date data;
+    static ArrayList<Trade> lt = new ArrayList<>();
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
 
     public String getMoeda() {
         return moeda;
@@ -24,7 +35,7 @@ public class Trade {
         this.moeda = moeda;
     }
 
-    public double getQtdCompraMoeda() {
+    public Double getQtdCompraMoeda() {
         return qtdCompraMoeda;
     }
 
@@ -32,7 +43,7 @@ public class Trade {
         this.qtdCompraMoeda = qtdCompraMoeda;
     }
 
-    public double getQtdVendaMoeda() {
+    public Double getQtdVendaMoeda() {
         return qtdVendaMoeda;
     }
 
@@ -40,7 +51,7 @@ public class Trade {
         this.qtdVendaMoeda = qtdVendaMoeda;
     }
 
-    public double getValorCompra() {
+    public Double getValorCompra() {
         return valorCompra;
     }
 
@@ -48,7 +59,7 @@ public class Trade {
         this.valorCompra = valorCompra;
     }
 
-    public double getValorVenda() {
+    public Double getValorVenda() {
         return valorVenda;
     }
 
@@ -64,17 +75,28 @@ public class Trade {
         this.lucroLiquido = lucroLiquido;
     }
 
-    public Double getMontanteOperacao() {
-        return montanteOperacao;
+    public static Double getSaldoCapital() {
+        return saldoCapital;
     }
 
-    public void setMontanteOperacao(double montanteOperacao) {
-        this.montanteOperacao = montanteOperacao;
+    public static void setSaldoCapital(Double saldoCapital) {
+        Trade.saldoCapital = saldoCapital;
     }
+
+    public double getSaldoTrade() {
+        return saldoTrade;
+    }
+
+    public void setSaldoTrade(double saldoTrade) {
+        this.saldoTrade = saldoTrade;
+    }
+
 
     public void adicionarTrade(Trade t){
         t.setLucroLiquido((qtdVendaMoeda*valorVenda)-(qtdCompraMoeda*valorCompra));
-        t.setMontanteOperacao(qtdVendaMoeda*valorVenda);
+        t.setSaldoTrade(t.getSaldoCapital()+t.lucroLiquido);
+        t.setSaldoCapital(t.getSaldoCapital()+t.lucroLiquido);
+
 
         lt.add(t);
     }
